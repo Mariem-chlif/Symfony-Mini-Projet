@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}    //extend base.html.twig
+{%  block sliders %}{% endblock %}
+{% block title %}Artiste index{% endblock %}  
+
+{% block body %}
+
+ <div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		    <div class="default-heading">
+						
+						<h2>★ARTISTES★</h2>
+		    </div>
+					
+				<div class="featured-element">
+					<div class="row">
+						{% for artiste in artistes %}
+							<div class="col-md-4 col-sm-4">
+								<div class="featured-item ">
+                               <div class="featured-item-info">
+										
+										<h4>{{ artiste.name }}</h4>
+                                        </div>
+									<div class="figure">
+										
+										<img class="img-responsive" width="300" height="300" src="{{ asset('uploads/images/' ~ artiste.ArtisteImage) }} " alt="artiste_image" />
+									</div>
+									
+									<div class="featured-item-info">
+										
+										
+                                         <a href="{{ path('artiste_show', {'id': artiste.id}) }}"  class="btn btn-info" style="width:150px;">SHOW</a>
+                                      <a href="{{ path('artiste_edit', {'id': artiste.id}) }}" class="btn btn-primary" style="width:150px;">EDIT</a>
+
+										<hr />
+                                    </div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+			 </div>
+				
+             
+   
+    <a href="{{ path('artiste_new') }}" class="btn btn-danger"  style="width:100%;">Create new</a>
+
+</div>
+		
+</div>			
+        
+{% endblock %}
+

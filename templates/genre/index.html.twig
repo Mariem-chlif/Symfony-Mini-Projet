@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Genre index{% endblock %}
+{%  block sliders %}{% endblock %}
+{% block body %}
+    
+
+
+    <div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		    <div class="default-heading">
+						
+						<h2>MUSIC STYLES</h2>
+		    </div>
+					
+				<div class="featured-element">
+					<div class="row">
+						{% for genre in genres %}
+							<div class="col-md-4 col-sm-6">
+								<div class="featured-item ">
+                                    <div class="featured-item-info">
+										
+										<h4>{{ genre.name }}</h4>
+                                        </div>
+									<div class="figure">
+										
+										<img class="img-responsive" width="300" height="400" src="{{ asset('uploads/images/' ~ genre.image) }} " alt="genre_image" />
+									</div>
+									
+									<div class="featured-item-info">
+										
+										<br>
+                                         <a href="{{ path('genre_show', {'id': genre.id}) }}"  class="btn btn-info" style="width:149px;">SHOW</a>
+                    <a href="{{ path('genre_edit', {'id': genre.id}) }}" class="btn btn-primary" style="width:149px;">EDIT</a>
+
+										<hr />
+                                    </div>
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+ 		
+                   
+
+      <a href="{{ path('genre_new') }}" class="btn btn-danger">Create new</a>
+	  </div>
+	
+</div>	
+{% endblock %}

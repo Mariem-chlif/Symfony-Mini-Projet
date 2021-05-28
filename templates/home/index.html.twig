@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HOME{% endblock %}
+
+{% block body %}
+
+ <div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		    <div class="default-heading">
+						
+						<h2>MUSIC STYLES</h2>
+		    </div>
+					
+				<div class="featured-element">
+					<div class="row">
+                        {% for style in genres %}
+							<div class="col-md-4 col-sm-6">
+								<div class="featured-item ">
+                                         <div class="featured-item-info">
+										
+				             	               <h4>{{ style.name }} </h4>
+                                         </div>
+									<div class="figure">
+										
+										<img class="img-responsive" width="300" height="400" src="{{ asset('uploads/images/' ~ style.image) }} " alt="genre_image" />
+									</div>
+									
+									<div class="featured-item-info">
+
+                                     <h5> Style {{ style.name }} contains {{ style.songs.count}} song. </h5>
+										<a href="{{ path('songs_for_one_style', {'id': style.id}) }}"  class="btn btn-primary" style="width:80%;">DISCOVER THEM</a>
+
+										
+                                       
+
+										<hr />
+                                    </div>
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+    </div>
+		
+</div>			
+
+ 
+			      
+
+
+{% endblock %}

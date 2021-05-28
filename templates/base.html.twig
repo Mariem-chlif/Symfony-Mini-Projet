@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Melodi{% endblock %}</title>
+
+	<!-- Styles -->
+
+		<!-- Bootstrap CSS -->
+		<link  href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link  href="{{ asset('css/player.css') }}" rel="stylesheet">	
+		<link rel="stylesheet" 
+        href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> 
+  
+		<!-- Animate CSS -->
+		<link href="{{asset('css/animate.min.css') }}" rel="stylesheet">
+		<!-- Basic stylesheet -->
+		<link rel="stylesheet" href="{{asset('css/owl.carousel.css') }}">
+		<!-- Font awesome CSS -->
+		<link href="{{asset('css/font-awesome.min.css') }}" rel="stylesheet">		
+		<!-- Custom CSS -->
+		<link href="{{asset('css/style.css') }}" rel="stylesheet">
+		<link href="{{asset('css/style-color.css') }}" rel="stylesheet">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{{asset('img/logo/favicon.ico') }}">
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+
+
+<div class="wrapper" id="home">
+
+
+  
+
+			<header>
+			
+				<!-- primary menu -->
+				<nav class="navbar navbar-fixed-top navbar-default">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<!-- logo area -->
+							<a class="navbar-brand" href="{{ path('home') }}">
+								<!-- logo image -->
+								<img class="img-responsive" src="{{asset('img/logo/logo.png')}}" alt="logo" />
+							</a>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+							<ul class="nav navbar-nav navbar-right">
+								
+{%  if app.user %}
+
+                                <li><a href="{{ path('home') }}">HOME</a></li>
+								<li><a href="{{ path('genre_index') }}">STYLES</a></li>
+								<li><a href="{{ path('song_index') }}">SONGS</a></li>
+								<li><a href="{{ path('artiste_index') }}">ARTISTES</a></li>
+								<li><a href="{{ path('participant_index') }}">PARTICIPANTS</a></li>
+								<li><a  href="{{ path('findbytitle') }}"><i class="fa fa-search"></i></a></li>
+                                <li><a href="{{ path('security_logout') }}">LOG Out</a></li>
+
+{%  else %}
+<li><a href="{{ path('home') }}">HOME</a></li>
+
+<li><a href="{{ path('allsongs') }}">SONGS</a></li>
+<li><a href="{{ path('allartiste') }}">ARTISTES</a></li>
+
+<li><a  href="{{ path('findbytitle') }}"><i class="fa fa-search"></i></a></li>
+             <li><a href="{{ path('security_login') }}">LOG IN</a></li>
+{%  endif %}
+
+
+
+
+							
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</header>
+	
+                <!-- block for animate navigation menu -->
+			<div class="nav-animate"></div>
+
+
+
+			
+			<!-- Scroll to top -->
+			<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
+</div>
+
+
+{%  block sliders %}
+  	<!-- banner area -->
+			<div class="banner">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="{{asset('img/banner/music.jpg')}}" alt="...">
+							<div class="container">
+								<!-- banner caption -->
+								<div class="carousel-caption slide-one">
+									<!-- heading -->
+									<h2 class="animated fadeInLeftBig"><i class="fa fa-music"></i> Melodi For You!</h2>
+									<!-- paragraph -->
+									<h3 class="animated fadeInRightBig">Find More Innovative &amp; Creative Music Albums.</h3>
+									<!-- button -->
+									<a href="{{ path('allsongs') }}" class="animated fadeIn btn btn-theme">Listen Now</a>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<img src="{{asset('img/banner/m2.jpg')}}" alt="...">
+							<div class="container">
+								<!-- banner caption -->
+								<div class="carousel-caption slide-two">
+									<!-- heading -->
+									<h2 class="animated fadeInLeftBig"><i class="fa fa-headphones"></i> Listen It...</h2>
+									<!-- paragraph -->
+									<h3 class="animated fadeInRightBig">Find More Innovative &amp; Creative Music Albums.</h3>
+									<!-- button -->
+									<a href="{{ path('allsongs') }}" class="animated fadeIn btn btn-theme">Listen Now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="fa fa-arrow-left" aria-hidden="true"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="fa fa-arrow-right" aria-hidden="true"></span>
+					</a>
+				</div>
+			</div>
+		<!--/ banner end -->
+
+ {% endblock %}
+
+
+  {% block body %}{% endblock %}
+
+	<!-- footer -->
+			<footer>
+				<div class="container">
+					<!-- social media links -->
+					<div class="social">
+						<a class="h-facebook" href="#"><i class="fa fa-facebook"></i></a>
+						<a class="h-google" href="#"><i class="fa fa-google-plus"></i></a>
+						<a class="h-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+						<a class="h-twitter" href="#"><i class="fa fa-twitter"></i></a>
+					</div>
+					<!-- copy right -->
+					<p class="copy-right">&copy; copyright 2021, All rights are reserved  .</p>
+				</div>
+			</footer>
+	<!-- footer end -->
+
+  {% block javascripts %}{% endblock %}
+
+	<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="{{asset('js/jquery.js')}}"></script>
+		<!-- Bootstrap JS -->
+		<script src="{{asset('js/bootstrap.min.js')}}"></script>
+		<!-- WayPoints JS -->
+		<script src="{{asset('js/waypoints.min.js')}}"></script>
+		<!-- Include js plugin -->
+		<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+		<!-- One Page Nav -->
+		<script src="{{asset('js/jquery.nav.js')}}"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="{{asset('js/respond.min.js')}}"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="{{asset('js/html5shiv.js')}}"></script>
+		<!-- Custom JS -->
+		<script src="{{asset('js/custom.js')}}"></script>
+		
+
+    </body>
+</html>

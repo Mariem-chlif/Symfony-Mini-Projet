@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participant index{% endblock %}
+{%  block sliders %}{% endblock %}
+{% block body %}
+
+
+
+  <div class="featured pad" id="featuredalbum" >
+	<div class="container">
+
+
+    <h1>Participant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Class</th>
+                <th>Group_tp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participant in participants %}
+            <tr>
+                <td>{{ participant.id }}</td>
+                <td>{{ participant.firstName }}</td>
+                <td>{{ participant.lastName }}</td>
+                <td>{{ participant.class }}</td>
+                <td>{{ participant.groupTp }}</td>
+                <td>
+                    <a href="{{ path('participant_show', {'id': participant.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('participant_edit', {'id': participant.id}) }}" class="btn btn-primary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('participant_new') }}" class="btn btn-danger">Create new</a>
+
+
+           </div>
+		
+</div>
+{% endblock %}

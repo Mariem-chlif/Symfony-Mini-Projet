@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Song{% endblock %}
+{%  block sliders %}{% endblock %}
+
+{% block body %}
+
+<div class="featured pad" id="featuredalbum">
+	<div class="container">
+    <h1>Create new Song</h1>
+
+    {{ include('song/_form.html.twig') }}
+
+    <a href="{{ path('song_index') }}" class="btn btn-secondary btn-lg btn-block">back to list</a>
+      </div>
+		
+</div>
+{% endblock %}

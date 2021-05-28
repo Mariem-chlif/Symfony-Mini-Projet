@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Song{% endblock %}
+{%  block sliders %}{% endblock %}
+
+{% block body %}
+
+
+ <div class="featured pad" id="featuredalbum">
+	<div class="container">
+
+    <h1>Edit Song</h1>
+
+    {{ include('song/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('song_index') }}" class="btn btn-info" >back to list</a>
+
+    {{ include('song/_delete_form.html.twig') }}
+
+</div> 
+  </div> 
+{% endblock %}

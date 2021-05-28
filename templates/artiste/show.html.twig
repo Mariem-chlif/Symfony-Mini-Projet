@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiste{% endblock %}
+{%  block sliders %}{% endblock %}
+
+{% block body %}
+
+
+    <div class="featured pad" id="featuredalbum" >
+	<div class="container">
+
+    <h1>Artiste</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ artiste.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ artiste.name }}</td>
+            </tr>
+            <tr>
+                <th>Artiste_image</th>
+              
+                <td><img src ="{{ asset('uploads/images/' ~ artiste.artisteImage) }}" width="200" height="200"/> </td>
+                
+               <tr>
+                <th>His populor songs</th>
+              
+                <td> 
+                {% for song in artiste.songs %}
+
+                
+                <div class="col-md-6 col-sm-6">
+								<!-- play list -->
+								<div class="playlist-content">
+									<ul class="list-unstyled">
+										<li class="playlist-number">
+											<!-- song information -->
+											<div class="song-info">
+												<!-- song title -->
+												<h4>{{ song.title }}</h4>
+												<p><strong>Album</strong>: {{ song.album }} &nbsp;|&nbsp; <strong>Type</strong>: {{ song.genre.name }} &nbsp;|&nbsp; <strong>length</strong>: {{ song.genre.name }}</p>
+											</div>
+											<!-- music icon -->
+											<div class="music-icon">
+												<a href="{{ path('song_show', {'id': song.id}) }}"><i class="fa fa-play"></i></a>
+												<a href="#"><i class="fa fa-pause"></i></a>
+											</div>
+											<div class="clearfix"></div>
+										</li>		
+									</ul>
+								</div>
+							</div>
+               
+{% endfor %}
+             </td>   
+                
+                
+               
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('artiste_index') }}" class="btn btn-secondary"> back to list</a>
+
+    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}" class="btn btn-warning"> edit</a>
+
+    {{ include('artiste/_delete_form.html.twig') }}
+
+
+    </div>
+    	</div> 
+{% endblock %}

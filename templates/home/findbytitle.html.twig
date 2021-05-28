@@ -1,0 +1,92 @@
+{%  block sliders %}{% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block title %}SEARCH{% endblock %}
+
+{% block body %}
+
+    <div class="featured pad" id="featuredalbum" >
+	<div class="container">
+
+
+<div style="background-color:#92a8d1;padding:50px;" class="container">
+<h4> SEARCH FOR A SONG</h4>
+
+<form class="form-inline" method= "post" action="{{path('findbytitle')}}">
+
+ 
+ 
+ <input type="text" class="form-control mb-2" id="title" name="title" value="{{title}}" placeholder="enter title" required>
+
+ <input type="submit" class="btn btn-light mb-2" value="SEARCH"></button>
+
+</form>
+</div>
+<div class="mt-3">
+{% if songs %}
+
+<br><br>
+   <h3> Result for: {{ title}}</h3>
+
+{% for song in songs %}
+		<div class="col-sm-4>
+		<div class="featured-item "  >
+
+
+
+
+
+
+<div class="col-md-4 col-sm-4">
+<div class="figure">
+										
+					<img class="img-responsive" class="col-md-4 col-sm-4" src="{{ asset('uploads/images/' ~ song.coverimage) }} " alt="img" />
+
+				</div>
+								<!-- play list -->
+								<div class="playlist-content">
+									<ul class="list-unstyled">
+										<li class="playlist-number">
+											<!-- song information -->
+											<div class="song-info">
+												<!-- song title -->
+												<h4>{{ song.title }}</h4>
+												<p><strong>Album</strong>: {{ song.album }} &nbsp;|&nbsp; <strong>Type</strong>: {{ song.genre.name }} &nbsp;|&nbsp; <strong>Singer</strong>: {{ song.artiste.name }}</p>
+											</div>
+											<!-- music icon -->
+											<div class="music-icon">
+												<a href="{{ path('song_show', {'id': song.id}) }}"><i class="fa fa-play"></i></a>
+												<a href="#"><i class="fa fa-pause"></i></a>
+											</div>
+											<div class="clearfix"></div>
+										</li>		
+									</ul>
+								</div>
+							</div>
+
+    
+                              
+				
+									
+	
+    
+		</div>
+		</div>
+
+{% endfor %}
+	
+
+
+{% elseif etat == true %}
+
+<h3> aucun resultat ERROORR 3andekch le8neya hedhi{{ title}} </h3>
+
+
+{% endif %}
+</div>
+
+ </div> </div>
+{% endblock %}
+
+
+

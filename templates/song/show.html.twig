@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Song{% endblock %}
+{%  block sliders %}{% endblock %}
+
+{% block body %}
+
+<div class="body"> 
+<div class="player"> 
+  
+    <!-- Define the section for displaying details -->
+    <div class="details"> 
+      <div class="now-playing">PLAYING NOW :{{ song.genre.name }} MUSIC</div> 
+      <div class="track-art"> 
+      <img src ="{{ asset('uploads/images/' ~ song.coverImage) }}" height="250px " width="250px " />
+      </div> 
+      <div class="track-name">{{ song.title }}</div> 
+      <div class="track-artist">Artist- {{ song.artiste.name }}  </div> 
+      <div class="track-artist">Album- {{ song.album }} </div> 
+    </div> 
+  
+    <!-- Define the section for displaying track buttons -->
+    <div class="buttons"> 
+      <div class="prev-track" onclick="prevTrack()"> 
+        <i class="fa fa-step-backward fa-2x"></i> 
+      </div> 
+      <div class="playpause-track" onclick="playpauseTrack()"> 
+        <i class="fa fa-play-circle fa-5x"></i> 
+      </div> 
+      <div class="next-track" onclick="nextTrack()"> 
+        <i class="fa fa-step-forward fa-2x"></i> 
+      </div> 
+    </div> 
+  
+    <!-- Define the section for displaying the seek slider-->
+    <div class="slider_container"> 
+      <div class="current-time">00:00</div> 
+      <input type="range" min="1" max="100"
+        value="0" class="seek_slider" onchange="seekTo()"> 
+      <div class="total-duration">{{ song.length }}</div> 
+    </div> 
+  
+    <!-- Define the section for displaying the volume slider-->
+    <div class="slider_container"> 
+      <i class="fa fa-volume-down"></i> 
+      <input type="range" min="1" max="100"
+        value="99" class="volume_slider" onchange="setVolume()"> 
+      <i class="fa fa-volume-up"></i> 
+    </div> 
+  </div> 
+
+</div> 
+
+
+
+
+<br><br>
+ 
+
+    <a href="{{ path('song_edit', {'id': song.id}) }}"  class="btn btn-info btn-lg btn-block"></i>
+ edit</a>
+
+    {{ include('song/_delete_form.html.twig') }}
+
+       <a href="{{ path('song_index') }}" class="btn btn-warning btn-lg btn-block">back to list</a>
+
+    
+{% endblock %}

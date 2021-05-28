@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participant{% endblock %}
+{%  block sliders %}{% endblock %}
+
+{% block body %}
+
+
+
+<div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		      
+
+
+
+    <h1>Participant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ participant.id }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ participant.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ participant.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>{{ participant.class }}</td>
+            </tr>
+            <tr>
+                <th>Group_tp</th>
+                <td>{{ participant.groupTp }}</td>
+            </tr>
+
+             <tr>
+                <th>Proposed songs </th>
+                <td>{{ participant.songs.count }}</td>
+            </tr>
+              <tr>
+                <th>     </th>
+	 <td>
+  <ul>
+  {% for songp in participant.songs %}
+  <li > <h5 class="card-title"  >{{ songp.title }} - {{ songp.artiste.name }}</h5> </li>
+  	{% endfor %}
+  </ul>
+   </td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('participant_index') }}">back to list</a>
+
+    <a href="{{ path('participant_edit', {'id': participant.id}) }}"> edit</a>
+
+    {{ include('participant/_delete_form.html.twig') }}
+
+
+
+        </div>
+		
+</div>
+{% endblock %}

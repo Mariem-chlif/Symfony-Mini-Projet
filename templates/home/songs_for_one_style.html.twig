@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ style.name }} MUSIC{% endblock %}
+{%  block sliders %}{% endblock %}
+{% block body %}
+
+<div class="featured pad" id="featuredalbum">
+	<div class="container">
+					
+		                <div class="default-heading">
+						
+						<h2>{{ style.name }} MUSIC</h2>
+		                 </div>
+					
+				<div class="featured-element">
+					<div class="row">
+                        {% for song in style.songs %}
+							<div class="col-md-4 col-sm-6">
+								<div class="featured-item ">
+                              
+									<div class="figure">
+										
+										<img class="img-responsive" width="400" height="400" src="{{ asset('uploads/images/' ~ song.coverimage) }} " alt="img" />
+									</div>
+									
+									<div class="featured-item-info">
+
+                                    <table style="width:400px">
+  <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Title :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.title }}</h5></td>
+   </tr>
+   <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Artiste :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.artiste.name }}</h5></td> 
+  </tr>
+
+
+    <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Album :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.album }}</h5></td>
+   </tr>
+   
+
+   <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Release Date :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.releaseDate ? song.releaseDate|date('Y-m-d') : '' }}</h5></td>
+   </tr>
+
+  <tr>
+    <td> <h5 class="card-title" style="color:gray;" >length :</h5></td>
+    <td> <h5 class="card-title"  >{{ song.length }}</h5></td> 
+  </tr>
+
+    <tr>
+    <td> <h5 class="card-title" style="color:gray;" >Proposed by :</h5></td>
+	 <td>
+  <ul>
+  {% for particip in song.participants %}
+  <li > <h5 class="card-title"  >{{ particip.firstname }}</h5> </li>
+  	{% endfor %}
+  </ul>
+   </td>
+
+  </tr>
+
+</table>
+										
+                                       
+
+										<hr />
+                                    </div>
+								</div>
+							</div>
+ {% else %} 
+<h3 > EMPTY </h3>
+
+
+						{% endfor %}
+						
+					</div>
+				</div>
+    </div>
+		
+</div>			
+
+ 
+			      
+
+
+{% endblock %}

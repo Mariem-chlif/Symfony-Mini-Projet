@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{%  block sliders %}{% endblock %}
+{% block title %}login{% endblock %}
+
+{% block body %}
+
+  <div class="featured pad" id="featuredalbum">
+	<div class="container">
+		
+<form  method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="_username" placeholder="Enter email">
+  </div>
+
+
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="_password" placeholder="Password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">LOGIN </button>
+
+
+   <button type="submit" class="btn btn-primary"><a href="{{ path('security_registration') }}" >REGISTER</a></button>
+</form>
+</div>
+</div>
+{% endblock %}
